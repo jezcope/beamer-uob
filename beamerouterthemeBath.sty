@@ -1,5 +1,11 @@
 \ProvidesPackage{beamerouterthemeBath}
 
+% Optional argument for CSCT
+\newif\if@doCSCT
+\@doCSCTfalse
+\DeclareOption{csct}{\@doCSCTtrue}
+\ProcessOptions
+
 \newdimen\beamer@sidebarwidth
 \newdimen\beamer@headheight
 \usebeamerfont{frametitle}
@@ -70,7 +76,12 @@
   \setbeamersize{sidebar width \beamer@sidebarside=\beamer@sidebarwidth}
 \fi
 
+
+\if@doCSCT
 \pgfdeclareimage[width=\paperwidth]{bg}{bg-research}
+\else
+\pgfdeclareimage[width=\paperwidth]{bg}{bg-csct}
+\fi
 \usebackgroundtemplate{\pgfuseimage{bg}}
 
 \mode
