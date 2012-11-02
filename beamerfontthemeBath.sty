@@ -1,6 +1,20 @@
 \ProvidesPackage{beamerfontthemeBath}
 
-\usepackage{helvet}
+\RequirePackage{iftex}
+
+\ifXeTeX
+  \usepackage{fontspec}
+  \defaultfontfeatures{Ligatures=TeX}
+  \setsansfont{Arial}
+\else
+  \ifLuaTeX
+    \usepackage{fontspec}
+    \defaultfontfeatures{Ligatures=TeX}
+    \setsansfont{Arial}
+  \else
+    \usepackage{helvet}
+  \fi
+\fi
 
 \usefonttheme{structurebold}
 
