@@ -1,6 +1,23 @@
 \ProvidesPackage{beamerthemeBath}
 
+\newif\ifbeamer@CSCT
+\beamer@CSCTfalse
+\DeclareOptionBeamer{csct}{\beamer@CSCTtrue}
+\ProcessOptionsBeamer
+
+%%%% CSCT Variant Theme %%%%
+\ifbeamer@CSCT
+
 \useoutertheme[csct]{Bath}
+\useinnertheme{Bath}
+\usecolortheme[csct]{Bath}
+\usefonttheme{Bath}
+
+\else
+%%%% Generic Bath Research Theme %%%
+\useoutertheme{Bath}
 \useinnertheme{Bath}
 \usecolortheme{Bath}
 \usefonttheme{Bath}
+
+\fi

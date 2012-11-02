@@ -1,10 +1,10 @@
 \ProvidesPackage{beamerouterthemeBath}
 
 % Optional argument for CSCT
-\newif\if@doCSCT
-\@doCSCTfalse
-\DeclareOption{csct}{\@doCSCTtrue}
-\ProcessOptions
+\newif\ifbeamer@CSCT
+\beamer@CSCTfalse
+\DeclareOptionBeamer{csct}{\beamer@CSCTtrue}
+\ProcessOptionsBeamer
 
 \newdimen\beamer@sidebarwidth
 \newdimen\beamer@headheight
@@ -77,10 +77,10 @@
 \fi
 
 
-\if@doCSCT
-\pgfdeclareimage[width=\paperwidth]{bg}{bg-research}
-\else
+\ifbeamer@CSCT
 \pgfdeclareimage[width=\paperwidth]{bg}{bg-csct}
+\else
+\pgfdeclareimage[width=\paperwidth]{bg}{bg-research}
 \fi
 \usebackgroundtemplate{\pgfuseimage{bg}}
 
