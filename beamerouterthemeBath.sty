@@ -1,5 +1,11 @@
 \ProvidesPackage{beamerouterthemeBath}
 
+% Optional argument for CSCT
+\newif\ifbeamer@CSCT
+\beamer@CSCTfalse
+\DeclareOptionBeamer{csct}{\beamer@CSCTtrue}
+\ProcessOptionsBeamer
+
 \newdimen\beamer@sidebarwidth
 \newdimen\beamer@headheight
 \usebeamerfont{frametitle}
@@ -31,14 +37,20 @@
   {%
     \nointerlineskip%
     \vskip-\beamer@headheight%
-    \vskip 1.2cm%
+
+% Fine tuning for title placement
+\ifbeamer@CSCT
+\vskip 0.6cm%
+\else
+\vskip 0.65cm%
+\fi
     \vbox to \beamer@headheight{%
-      \vfil
       \leftskip=-\beamer@leftmargin%
       \advance\leftskip by0.4cm%
       \rightskip=-\beamer@rightmargin%
       \advance\rightskip by0.3cm plus1fil%
-      {\usebeamercolor[fg]{frametitle}\usebeamerfont{frametitle}\insertframetitle\par}%
+      {\usebeamercolor[White]{frametitle}\usebeamerfont{frametitle}\insertframetitle\par}%
+      \vskip 0.5cm%
       {\usebeamercolor[fg]{framesubtitle}\usebeamerfont{framesubtitle}\insertframesubtitle\par}%
       \vbox{}%
       \vskip-1em%
@@ -70,7 +82,12 @@
   \setbeamersize{sidebar width \beamer@sidebarside=\beamer@sidebarwidth}
 \fi
 
+
+\ifbeamer@CSCT
+\pgfdeclareimage[width=\paperwidth]{bg}{bg-csct}
+\else
 \pgfdeclareimage[width=\paperwidth]{bg}{bg-research}
+\fi
 \usebackgroundtemplate{\pgfuseimage{bg}}
 
 \mode
