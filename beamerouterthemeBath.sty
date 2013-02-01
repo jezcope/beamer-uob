@@ -37,9 +37,14 @@
   {%
     \nointerlineskip%
     \vskip-\beamer@headheight%
-    \vskip 0.7cm%
+
+% Fine tuning for title placement
+\ifbeamer@CSCT
+\vskip 0.6cm%
+\else
+\vskip 0.65cm%
+\fi
     \vbox to \beamer@headheight{%
-%      \vfil
       \leftskip=-\beamer@leftmargin%
       \advance\leftskip by0.4cm%
       \rightskip=-\beamer@rightmargin%
